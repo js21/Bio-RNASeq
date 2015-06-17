@@ -1,9 +1,13 @@
 language: perl
+addons:
+  apt:
+    packages:
+    - samtools
+    - libbam-dev
+    - tabix
 perl:
   - 5.14
 sudo: false
 install:
-  - 'cpanm Dist::Zilla'
-  - 'dzil authordeps --missing | cpanm'
-  - 'dzil listdeps --missing | cpanm'
+  - "source ./install_dependencies.sh"
 script: dzil test	
